@@ -4,27 +4,42 @@
 	<title>the moon</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="js/scripts.js"></script>
 </head>
 <body>
 	<header class="main-header">
+		<div class="nav-bg-scroll"></div>
 		<div class="container nav">
 			<img src="img/logo.png" class="main-logo">
 			<nav class="main-navigation">
 				<ul>
-					<li><a href="#intro">Введение</a></li>
-					<li><a href="#skills">Навыки</a></li>
-					<li><a href="#interesting">Интересное</a></li>
-					<li><a href="#portfolio">Портфолио</a></li>
+					<li><span class="bg-hover-color"></span><a href="#intro">Введение</a></li>
+					<li><span class="bg-hover-color"></span><a href="#skills">Навыки</a></li>
+					<li><span class="bg-hover-color"></span><a href="#interesting">Интересное</a>
+						<ul class="sub-menu">
+							<li>Первое</li>
+							<li>Второе</li>
+							<li>Третье</li>
+							<li>Четвертое</li>
+						</ul>
+					</li>
+					<li><span class="bg-hover-color"></span><a href="#portfolio">Портфолио</a></li>
 				</ul>				
 			</nav>			
 		</div>
 	</header>
 
 	
-		<div id="intro" class="block-intro">
-			<div class="block-intro-title">это <span>любовь</span> к луне!</div>
+		<div id="intro" class="block block-intro">
+			<div class="block-intro-bg" >
+				
+				<img src="img/main.jpg" alt="красивые картнки" class="el-scroll" data-speed="-3">		
+			
+			<div class="block-intro-title el-scroll" data-speed="2">это <span>любовь</span> к луне!</div>
+			</div>
 		</div>
-		<div id="skills" class="block-skills">
+		<div id="skills" class="block block-skills">
 			<div class="block-skills-title">мы - луна</div>
 			<div class="container">
 				<article class="block-skills-item">
@@ -49,7 +64,7 @@
 				</article>
 			</div>
 		</div>
-		<div id="interesting" class="block-interesting">
+		<div id="interesting" class="block block-interesting">
 			<article class="block-interesting-item">
 				<div class="interesting-description desc-left">
 					<div class="description-title">Мои домашние</div>
@@ -69,7 +84,10 @@
 				</div>
 			</article>			
 		</div>
-		<div id="portfolio" class="block-portfolio container">
+		<div id="inspiration" class="block block-inspiration">
+			
+		</div>
+		<div id="portfolio" class="block block-portfolio container">
 			<div class="portfolio-title">Современный дизайн</div>
 			<div class="portfolio-subtitle">Высокое качество продукта - это возможно!</div>
 			<article class="block-portfolio-item">
