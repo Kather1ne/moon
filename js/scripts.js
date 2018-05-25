@@ -17,15 +17,9 @@ $(function(){
 			var blockEnd = $(this).parent().offset().top + $(this).parent().height();
 			var speed = $(this).data("speed");	
 			var parrent = $(this).parent();
-			// console.log(speed);
 			var delta = (2*parrent.height() - (($(document).scrollTop()+ parrent.height()) - parrent.offset().top))/(2*parrent.height())*100;
-			console.log("delta: " + delta, "speed:" + speed);
-			// var procent = 50 - 50*speed + delta*speed;	
 			var procent = 50 - 50*speed + delta*speed;
-			console.log("procent: ", procent);
-			console.log(" ");
-
-
+			
 			if ((pagePos > $(this).parent().offset().top)  && (pagePos < blockEnd)) { 
 				$(this).css({						
 					transform: "translate(-50%, " + (-procent) + "%)",
