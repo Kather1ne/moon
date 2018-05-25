@@ -138,13 +138,13 @@ body {
 }
 
 .block-intro {
-	height: 100vh;	
+	height: 55vw;	
 	overflow: hidden;
 	position: relative;
 }
 
 .block-intro-bg {
-	height: 100vh;
+	height: 100%;
 	width: 100%;
 	position: absolute;
 }
@@ -161,7 +161,13 @@ body {
 	position: absolute;
 	top: 50%;
 	left: 50%;   
+	height: 150%;
 	transform: translate(-50%, -50%);
+	
+
+}
+
+.block-intro-title div {
 	text-transform: uppercase;   
 	letter-spacing: 15px;
 	font-size: 48px;
@@ -172,7 +178,9 @@ body {
 	padding-right: 5px;
 	animation-name: intro-title;
 	animation-duration: 1s;
-
+	transform: translate(-50%);
+    position: absolute;
+    top: 50%;
 }
 
 .block-intro-title span {
