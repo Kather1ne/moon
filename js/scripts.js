@@ -93,7 +93,7 @@ $(function(){
 		});
 		$(allElements[value]).css({
 			left: "0",
-			"animation-name": ((dir == "next")?"posTwoNext":"posTwoPrev")
+			"animation-name": ((dir == "next")?"posTwoNext":"posTwoPrev") 
 		});
 				
 	}
