@@ -101,7 +101,7 @@ $(function(){
 				left: ((dir == "next")?"100%":"-100%")
 			}, 1000).css("left","0");
 		}
-
+ 
 		this.stopTimer = function() {
 			if(timer != null) {
 				clearInterval(timer);
