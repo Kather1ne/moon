@@ -383,8 +383,6 @@ body {
 .interesting-image {
 	width: 50%;	
 	height: 100%;
-	background-position: 50%;
-	background-size: cover;
 	overflow: hidden;
 	position: relative;
 }

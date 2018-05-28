@@ -73,60 +73,71 @@ $(function(){
 		});
 	});
 
+	// события слайдера
 
-	var i = 1;
-	function imgChange(element, dir)  {
-		var elem = $("." + element + " .myimg");
-		
-		if (i < 1) {
-			i++;
-		}
-		else {
-			i = 0;
-		}
-		var value = ((i==1)?0:1);
-		var allElements = $(elem).toArray();
+	function ImgChange() {
+		var i = 0;
+		var timer;
+		var value = 1;
 
-		$(allElements[i]).css({
-			left: "100%",
-			"animation-name": ((dir == "next")?"posOneNext":"posOnePrev")
-		});
-		$(allElements[value]).css({
-			left: "0",
-			"animation-name": ((dir == "next")?"posTwoNext":"posTwoPrev") 
-		});
-				
+		this.imgShift = function (element, dir) {
+
+			var elem = $("." + element + " .myimg");
+			if (i < 1) {
+				i++;
+			}
+			else {
+				i = 0;
+			}
+
+			value = ((i==1)?0:1);
+			var allElements = $(elem).toArray();
+
+			$(allElements[i]).css("left", "0").animate({
+				left: ((dir == "next")?"-100%":"100%")				
+			}, 1000);
+
+			$(allElements[value]).animate({
+				left: ((dir == "next")?"100%":"-100%")
+			}, 1000).css("left","0");
+		}
+
+		this.stopTimer = function() {
+			if(timer != null) {
+				clearInterval(timer);
+			}
+		}
+
+		this.setTimer = function(element) {
+			var localFunc = this.imgShift;
+			timer = setInterval( function() { localFunc(element, "next"); }, 2000);
+		}
 	}
 
-	function timerFunction() {
-		timer1 = setInterval(function() { imgChange("img-right", "next"); }, 5000);
-		setTimeout(function() { 
-			timer2 = setInterval( function() { imgChange("img-left", "next");}, 3000)
-		}, 3000);
-	}
+	var firstSlider = new ImgChange();
+	firstSlider.setTimer("img-right");
 
-	$(document).ready(timerFunction);	
+	var secondSlider = new ImgChange();
+	setTimeout(function() { secondSlider.setTimer("img-left")}, 3000);
 
 	$(".description-btn").on("click", function() {
-		var elemClass = "img-left";
-		var delay = 3000;
 		var slideDirection = "next";
-		if ($(this).parent().hasClass("desc-left")) {
-			clearInterval(timer1);
-			elemClass = "img-right";
-			delay = 5000;
-			timer1 = setInterval(function() { imgChange(elemClass, "next"); }, delay);			
-		}
-		else {
-			clearInterval(timer2);
-			timer2 = setInterval(function() { imgChange(elemClass, "next"); }, delay);
-		}
 
 		if ($(this).hasClass("btn-next")) {
 			slideDirection = "prev";
 		}
+
+		if ($(this).parent().hasClass("desc-left")) {
+			firstSlider.stopTimer();
+			firstSlider.imgShift("img-right", slideDirection);
+			firstSlider.setTimer("img-right");					
+		}
+		else {
+			secondSlider.stopTimer();
+			secondSlider.imgShift("img-right", slideDirection);
+			secondSlider.setTimer("img-right");
+		}	
 		
-		imgChange(elemClass, slideDirection);
 	});
 
 
