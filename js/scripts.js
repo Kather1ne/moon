@@ -94,12 +94,12 @@ $(function(){
 			var allElements = $(elem).toArray();
 
 			$(allElements[i]).css("left", "0").animate({
-				left: ((dir == "next")?"-100%":"100%")				
+				left: ((dir == "next")?"-100%":"+100%")				
 			}, 1000);
 
-			$(allElements[value]).animate({
-				left: ((dir == "next")?"100%":"-100%")
-			}, 1000).css("left","0");
+			$(allElements[value]).css("left", ((dir == "next")?"100%":"-100%")).animate({
+				left: 0
+			}, 1000);
 		}
  
 		this.stopTimer = function() {
