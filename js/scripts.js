@@ -93,13 +93,19 @@ $(function(){
 			value = ((i==1)?0:1);
 			var allElements = $(elem).toArray();
 
-			$(allElements[i]).css("left", "0").animate({
-				left: ((dir == "next")?"-100%":"+100%")				
+
+			$(allElements[i]).animate({
+				left: ((dir == "prev")?"-100%":"100%")				
 			}, 1000);
 
-			$(allElements[value]).css("left", ((dir == "next")?"100%":"-100%")).animate({
-				left: 0
-			}, 1000);
+			$(allElements[value]).animate({
+				left: ((dir == "prev")?"100%":"-100%")
+			}, 0);
+
+			$(allElements[value]).animate({
+				left: "0"				
+			}, 1000);	
+
 		}
  
 		this.stopTimer = function() {
@@ -110,7 +116,7 @@ $(function(){
 
 		this.setTimer = function(element) {
 			var localFunc = this.imgShift;
-			timer = setInterval( function() { localFunc(element, "next"); }, 2000);
+			timer = setInterval( function() { localFunc(element, "prev"); }, 4000);
 		}
 	}
 
@@ -121,10 +127,10 @@ $(function(){
 	setTimeout(function() { secondSlider.setTimer("img-left")}, 3000);
 
 	$(".description-btn").on("click", function() {
-		var slideDirection = "next";
+		var slideDirection = "prev";
 
 		if ($(this).hasClass("btn-next")) {
-			slideDirection = "prev";
+			slideDirection = "next";
 		}
 
 		if ($(this).parent().hasClass("desc-left")) {
@@ -134,8 +140,8 @@ $(function(){
 		}
 		else {
 			secondSlider.stopTimer();
-			secondSlider.imgShift("img-right", slideDirection);
-			secondSlider.setTimer("img-right");
+			secondSlider.imgShift("img-left", slideDirection);
+			secondSlider.setTimer("img-left");
 		}	
 		
 	});

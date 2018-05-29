@@ -10,47 +10,6 @@
 	}
 }
 
-@keyframes posOneNext {
-	from {
-		left: 0;
-	}
-
-	to {
-		left: -100%;
-	}
-}
-
-@keyframes posTwoNext {
-	from {
-		left: 100%;
-	}
-
-	to {
-		left: 0;
-	}
-}
-
-@keyframes posOnePrev {
-	from {
-		left: 0;
-	}
-
-	to {
-		left: 100%;
-	}
-}
-
-@keyframes posTwoPrev {
-	from {
-		left: -100%;
-	}
-
-	to {
-		left: 0;
-	}
-}
-
-
 body {
 	font-family: "Franklin Gothic", sans-serif;
 	margin: 0;
@@ -383,8 +342,8 @@ body {
 .interesting-image {
 	width: 50%;	
 	height: 100%;
-	overflow: hidden;
 	position: relative;
+	overflow: hidden;
 }
 
 
@@ -392,13 +351,22 @@ body {
 	float: right;
 }
 
-.interesting-image img {
+.interesting-image .myimg  {
 	position: absolute;
 	width: auto;
-	max-height: 100%;
+	height: 100%;
 	width: 100%;
-	left: 0;
-	animation-duration: 1.5s;	
+	left: 0;	
+	overflow: hidden;
+}
+
+.interesting-image .myimg img {
+	height: auto;
+	max-width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .block-portfolio {
@@ -449,4 +417,12 @@ body {
     padding-left: 15px;
     padding-right: 15px;
     text-align: center;
+}
+
+@media (max-width: 1490px) {
+	.interesting-image .myimg img {
+		max-height: 100%;
+		max-width: 500%;
+		width: auto;	
+	}
 }
