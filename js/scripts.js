@@ -14,9 +14,8 @@ $(function(){
 			var blockEnd = parent.offset().top + parent.height(); // блок заканчивается в точке экрана, равной сумме его нулевой координаты и его высоты
 			var delta = (2*parent.height() - ((pagePos + parent.height()) - parent.offset().top))/(2*parent.height())*100; // процент прокрутки родительского контейнера
 			var procent = 50 - 50*speed + delta*speed; // процент прокрутки объекта в зависимости от прокрутки родителя
-			
 			// считаем проценты, пока родительский блок находится в видимости экрана
-			if ((pagePos > parent.offset().top)  && (pagePos < blockEnd)) { 
+			if (( $(window).height() > parent.offset().top - pagePos)  && (pagePos < blockEnd)) { 
 				$(this).css({						
 					transform: "translate(-50%, " + (-procent) + "%)",
 					top: procent + "%"
